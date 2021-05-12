@@ -15,12 +15,27 @@ class MainActivity : AppCompatActivity() {
 
         btnSuma.setOnClickListener{
             val intent: Intent = Intent(this, MainActivity2::class.java)
-            intent.putExtra("valor", "Hola")
+            /*intent.putExtra("valor", "Hola")
             intent.putExtra("valor2","Prueba")
-            intent.putExtra("valor3","asdfasdf")
+            intent.putExtra("valor3","asdfasdf")*/
             //startActivity(intent)
             //finish()
 
+            startActivityForResult(intent,1)
+        }
+
+        btnResta.setOnClickListener{
+            val intent: Intent = Intent(this, MainActivity3::class.java)
+            startActivityForResult(intent,1)
+        }
+
+        btnMultiplicacion.setOnClickListener {
+            val intent: Intent = Intent(this, MainActivity4::class.java)
+            startActivityForResult(intent,1)
+        }
+
+        btnDivision.setOnClickListener {
+            val intent: Intent = Intent(this, MainActivity5::class.java)
             startActivityForResult(intent,1)
         }
     }
@@ -32,10 +47,13 @@ class MainActivity : AppCompatActivity() {
             if(requestCode == 1){
                 val bundle = data?.extras
                 if(bundle!=null){
-                    val resultado = bundle.getString("resultado")
-                    Toast.makeText(this,resultado,Toast.LENGTH_LONG).show()
+                    val text = bundle.getString("resultado")
+                    txtTexto.text = text
+                //Toast.makeText(this,text,Toast.LENGTH_LONG).show()
 
                 }
+
+
             }
         }
     }
